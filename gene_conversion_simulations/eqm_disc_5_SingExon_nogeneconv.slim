@@ -1,0 +1,64 @@
+//To run:
+//slim -d d_seed=seed -d d_f0=f0 -d d_f1=f1 -d d_f2=f2 -d d_f3=f3 -d d_rec_rate -d "d_simID='1'" -d "d_repID='1'" eqm_disc_5_SingExon_geneconv.slim
+//Human parameters. Simualtions without gene conversion.
+//real Ne = 23222, mu = 1.25 x 10-8, rec = rec_rate * 10^-8, 2Nes = [0, -1, -10, -100, -100000]
+//scaling factor = 10
+//scaled Ne = 2322, scaled mu = 1.25 x 10-7, rec = rec_rate * 10^-7, totrec = 6*rec
+//This is a discrete DFE model with 4 bins
+//Demographic changes will be exponential, read from a file.
+initialize()
+{
+    setSeed(d_seed);
+    defineConstant("scaling_factor", 10);
+    defineConstant("Ne", asInteger(23222/scaling_factor));
+    defineConstant("gen_burnin", 10*Ne);
+    defineConstant("s_pos", 500/(2*Ne));
+    defineConstant("f_pos", d_f_pos); //1% or 0.01
+    
+    //selection coefficients:                                                   
+    defineConstant("t0", 0.0);                                                  
+    defineConstant("t1", -1.0/(2*Ne));                                          
+    defineConstant("t2", -10.0/(2*Ne));                                         
+    defineConstant("t3", -100.0/(2*Ne));                                        
+    defineConstant("t4", -1.0);                                                 
+    print(t0);                                                                  
+    print(t1);                                                                  
+    print(t2);                                                                  
+    print(t3);                                                                  
+    print(t4);                                                                  
+
+    // set the overall mutation rate
+    initializeMutationRate(scaling_factor*1.25*1e-8);
+    
+    // mutation types: 
+    initializeMutationType("m1", 0.5, "s", "return runif(1, t1, t0);"); //neutral, 2Nes = [0,-1]
+    initializeMutationType("m2", 0.5, "s", "return runif(1, t2, t1);"); // -1<2Nes<-10, uniform distribution
+    initializeMutationType("m3", 0.5, "s", "return runif(1, t3, t2);"); //moderately deleterious, -10<2Nes<-100, uniform distribution
+    initializeMutationType("m4", 0.5, "s", "return runif(1, t4, t3);"); //strongly deleterious, 2Nes>=-100, uniform distribution
+    initializeMutationType("m5", 0.5, "f", s_pos);
+    
+    // g1 genomic element type: uses m1 for all mutations
+    initializeGenomicElementType("g1", m1, 1.0); //intergenic
+    initializeGenomicElementType("g2", c(m1, m2, m3, m4, m5), c((1.0-f_pos)*d_f0, (1.0-f_pos)*d_f1, (1.0-f_pos)*d_f2, (1.0-f_pos)*d_f3, f_pos)); //functional: weakly deleterious, gamma
+    
+    //chromosome with a single functional element on one side
+    initializeGenomicElement(g1, 0, 49999);
+    initializeGenomicElement(g2, 50000, 53999);
+    
+    // uniform recombination along the chromosome
+    initializeRecombinationRate(d_rec_rate*scaling_factor*1e-8); 
+}
+
+// part 2 (burn-in for gen_burnin generations): create a population of N_anc individuals
+1
+{
+    sim.addSubpop("p1", Ne);
+}
+//print genotypes of 100 genomes selected randomly without replacement:
+23220 late()
+{
+    p1.outputMSSample(100, F, "*", "/scratch/pjohri1/BgsDfeDemo_Human/geneconv_humans/sim" + d_simID + "/sim" + d_simID + "_rep" + d_repID + ".ms", F);
+}
+//print all fixed mutations
+23220 late(){sim.outputFixedMutations("/scratch/pjohri1/BgsDfeDemo_Human/geneconv_humans/sim" + d_simID + "/sim" + d_simID + "_rep" + d_repID + ".fixed", append=F);}
+23220 { }
