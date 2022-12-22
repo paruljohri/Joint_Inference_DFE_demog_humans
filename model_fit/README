@@ -1,0 +1,25 @@
+This describes the scripts that were used to check the fit of the best model (with and without positive selection) to the empirical data.
+
+1. Slim script used for simulation:
+demo_dfe_SingExon_human_pos_agave.slim
+
+2. The different parameters used for evaluating the 9 different scenarios:
+model_fit_parameters.txt
+
+3. Bash script used to queue the simulations:
+queue_SingExon_human_model_fit_agave.sh
+uses:
+write_slim_scripts_SingExon_human_model_fit_agave.py //to write the slim scripts with specific parameters
+
+4. Sbatch script that gets launched to perform the simulations:
+run_SingExon_slim_array_human_model_fit_agave.sh
+
+5. Scripts to filter sites and calcualte stats;
+run_SingExon_stats_array_model_fit_filtered.sh
+statistics_bigwindow_pylibseq_SingExon_human_model_fit_filtered.py
+
+6. Plotting the fit of the best model (without positive selection)
+plot_model_fit.r
+
+7. Plotting the fit of the best model with positive selection:
+plot_model_fit_with_positive_selection_main_figure.r
