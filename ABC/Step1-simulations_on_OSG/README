@@ -1,0 +1,18 @@
+All simulations for the ABC inference were perform on OSG, which is based on the scheduler system provided by HTCondor. 
+
+1. Bash script to submit simulations for a single parameter combination
+submit_SingExon_slim_human_v2.sh
+
+This script uses:
+-write_slim_scripts_SingExon_human_v2.py //to write the slim scripts and .submit scripts
+which uses:
+-GRCh37_exon2-6kb_CNE500_rec_numbp50_final_div.tab //the recombination rates and lengths of each exon and it's intergenic region
+-demo_dfe_SingExon_human_logunif_parameters_v2.txt // the file that has the parameter values for each parameter combination
+
+2. The template submit script used is:
+SingExon_slim_queue_human_v2.submit
+
+3. Examples of slim scripts and submit files for a random parameter combiantion (#2000) are shown in folders:
+SUBMITFILES
+SLIMSCRIPTS
+DEMO_DFE_SINGEXON_HUMAN_V2 //Has the final results
