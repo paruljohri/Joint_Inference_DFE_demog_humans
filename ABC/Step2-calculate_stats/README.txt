@@ -23,4 +23,4 @@ This script uses:
 make_table_statistics_SingExon_osg.py
 
 This script uses the parameter file:
-demo_dfe_SingExon_human_logunif_parameters_v2.txt //can be found here - XX
+demo_dfe_SingExon_human_logunif_parameters_v2.txt //can be found in the folder - Joint_Inference_DFE_demog_humans/ABC/Step1-simulations_on_OSG/
