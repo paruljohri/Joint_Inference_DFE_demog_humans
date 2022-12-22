@@ -1,0 +1,22 @@
++ProjectName = "DemoSims"
+
+executable = /home/pjohri/SingExon_slim_commands_human.sh
+initialdir = /home/pjohri/DEMO_DFE_SINGEXON_HUMAN_V2/simID
+arguments = $(SimNum) $(GeneNum) $(RepNum) $(seed) $(scaling_factor) $(Nanc) $(growth_factor) $(s_f0) $(s_f1) $(s_f2) $(s_f3) $(RecRate) $(InterLen) $(ExonLen)
+Requirements = HAS_SINGULARITY == TRUE
++SingularityImage = "/cvmfs/singularity.opensciencegrid.org/christinalk/slim:latest"
+
+should_transfer_files = YES
+transfer_input_files = /home/pjohri/SUBMITFILES/sim$(SimNum).csv, /home/pjohri/SingExon_slim_commands_human.sh, /home/pjohri/SLIMSCRIPTS/script_sim$(SimNum).slim
+
+when_to_transfer_output = ON_EXIT
+
+log = /home/pjohri/LOGS/slimtest_sim$(SimNum)_gene$(GeneNum)_rep$(RepNum)_$(ClusterId)_$(ProcId).log
+output = /home/pjohri/LOGS/slimtest_sim$(SimNum)_gene$(GeneNum)_rep$(RepNum).out
+error =  /home/pjohri/LOGS/slimtest_sim$(SimNum)_gene$(GeneNum)_rep$(RepNum)_$(ClusterId)_$(ProcId).err
+
+request_cpus = 1
+request_memory = 300MB
+request_disk = 3MB
+
+Queue SimNum,GeneNum,RepNum,seed,scaling_factor,Nanc,growth_factor,s_f0,s_f1,s_f2,s_f3,RecRate,InterLen,ExonLen from /home/pjohri/SUBMITFILES/simID.csv
