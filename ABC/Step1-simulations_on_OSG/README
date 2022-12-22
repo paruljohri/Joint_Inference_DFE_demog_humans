@@ -6,6 +6,7 @@ submit_SingExon_slim_human_v2.sh
 This script uses:
 -write_slim_scripts_SingExon_human_v2.py //to write the slim scripts and .submit scripts
 which uses:
+-demo_dfe_SingExon_human.slim //the slim script
 -GRCh37_exon2-6kb_CNE500_rec_numbp50_final_div.tab //the recombination rates and lengths of each exon and it's intergenic region
 -demo_dfe_SingExon_human_logunif_parameters_v2.txt // the file that has the parameter values for each parameter combination
 
