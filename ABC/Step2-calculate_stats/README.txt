@@ -21,6 +21,7 @@ This script uses:
 
 4. Make the final table of stats that can be used for ABC inference
 make_table_statistics_SingExon_osg.py
+>>final output file that has stats for all simulations: demo_dfe_SingExon_human_v2_stats_abc.txt.zip
 
 This script uses the parameter file:
 demo_dfe_SingExon_human_logunif_parameters_v2.txt //can be found in the folder - Joint_Inference_DFE_demog_humans/ABC/Step1-simulations_on_OSG/
