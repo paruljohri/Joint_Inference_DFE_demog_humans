@@ -23,7 +23,6 @@ select_exons_length.py
 5.
 Gets recombination rate for every exon written in .tab files
 get_recombination_exons_refseq.py
->>Output: GRCh37_exon1-6kb_CNE500_rec.tab
 
 6. 
 python add_numbp50_to_exons.py
@@ -32,7 +31,9 @@ python add_numbp50_to_exons.py
 
 9. select_exons_final.py
 >>gives the final exons in 2 different ways. Place a fixed cutoff on intergenic length or use numbp50*4 as the cutoff. Write it in 2 separate files and add divergence to it.
+>> output file: GRCh37_exon2-6kb_CNE500_rec_numbp50_final_div.tab
 
 10. gets the final coordinates of each region (for use later):
 python get_final_coordinates_single_exons.py
+>>output file: single_exon_coordinates.txt
 
