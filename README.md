@@ -1,6 +1,6 @@
 # Here are scripts employed in the paper entitled "Developing an evolutionary baseline model for humans: jointly inferring purifying selection with population history".
 
-Following is the description of the scripts that are present in each of thes folders:\
+Following is the description of the scripts that are present in each of thes folders:
 
 >> selecting_exons\
 Scripts used to select the exons in the human genome to which our method was applied.
