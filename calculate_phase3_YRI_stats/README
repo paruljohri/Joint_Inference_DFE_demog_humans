@@ -80,7 +80,7 @@ python get_all_statistics_phase3_by_category_abc.py high_div
 
 
 >>Here are some of the final files provided (including the stats):
--STATS_FILTERED.zip //stats for all single exons, including final divergence values
+-STATS_FILTERED.zip //stats for all single exons, including final divergence values, and the final file used for abc inference
 -MS_FILTERED //.ms files of all single exons post-filtering
 -FASTA //All single exons aligned to the ancestor. Not filtered.
 -FILTERED_SITES.zip //the set of all sites filtered/masked/excluded for each exon + intergenic
