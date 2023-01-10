@@ -1,4 +1,6 @@
 #This script is simply to take divergence values from the Refseq exons and add it to another file:
+#Note this is a very rough estiamte of divergence which was simply used inititally as a check. 
+#The values of divergence used for inference were carefully calculated later and the scripts are here - https://github.com/paruljohri/Joint_Inference_DFE_demog_humans/tree/main/calculate_phase3_YRI_stats
 
 import sys
 
