@@ -31,28 +31,6 @@ d_chrom = {}
 d_start = {}
 d_end = {}
 
-#Reading TEs first:
-#print ("reading TEs")
-#f_TE = open("/home/pjohri1/BgsDfeDemo_Human/Humans/annotation/hg19_Repeatmasker_UCSC.gff", 'r')
-#d_col = {}
-#for line in f_TE:
-#    line1 = line.strip('\n')
-#    line2 = line1.split('\t')
-#    if line2[0] == "#bin":
-#        col = 0
-#        for x in line2:
-#            d_col[x] = col
-#            col = col + 1
-#    else:
-#        if line2[d_col["genoName"]] == chromname_ucsc:
-#            s = line2[d_col["repName"]] + "-" + line2[d_col["genoStart"]] + "-" + line2[d_col["genoEnd"]]
-#            d_chrom[s] = line2[d_col["genoName"]]
-#            d_start[s] = int(line2[d_col["genoStart"]])
-#            d_end[s] = int(line2[d_col["genoEnd"]])
-#            if d_chrom[s] in d_elements.keys():
-#                d_elements[d_chrom[s]].append(s)
-#f_TE.close()
-
 #Reading SNO and miRNAs:
 print ("reading sno and miRNAs")
 f_sno = open("/home/pjohri1/BgsDfeDemo_Human/Humans/annotation/sno_miRNA.txt", 'r')
