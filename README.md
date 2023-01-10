@@ -12,13 +12,13 @@ Simulations used to assess the importance of gene conversion rates in the recove
 Scripts used to calculate the summary statistics form 50 YRI individuals from phase3 data. This includes obtaining the variants and the fasta files of the ancestral alleles in order to obtain polymorphism-based statistics and divergence respectively.
 
 >> ABC\
--Simulations to peerform ABC.
--Calculation of statistics from simulated data.
--Performing inference.
+-Simulations to perform ABC.\
+-Calculation of statistics from simulated data.\
+-Performing inference.\
 
 >> simulations_with_mutation_rate_heterogeneity\
 Scripts used to test how mutation rate heterogeneity across the genome can bias our inference method.
 
 >>model_fit\
 -assessing the fit of our best model to data\
--assessing the fit of the our best model with varying extent and frequency of recurrent positive selection.\
+-assessing the fit of the our best model with varying extent and frequency of recurrent positive selection.
