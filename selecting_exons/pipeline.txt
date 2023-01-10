@@ -1,0 +1,38 @@
+
+
+1.
+Sort the gff file by left coordinate
+python sort_gff_file.py
+
+2.
+python get_exon_intergenic.py
+>>this script got the intergenic for every exon
+
+3.
+find_nearest_CNE_noTEs.py
+>>this script walks along the intergenic and finds the first element (phastcons or miRNA) that is larger than 500
+bp on either side of every exon. Does it chromosome-wise
+>>Output: GRCh37_exons_firstelement_chr1_500bp.tab
+
+4.
+Size selection for exons:
+select_exons_length.py
+>> selects for protein coding exons of length 1-6kb (to be generous)
+>>Output: GRCh37_exon1-6kb_CNE500.tab
+
+5.
+Gets recombination rate for every exon written in .tab files
+get_recombination_exons_refseq.py
+>>Output: GRCh37_exon1-6kb_CNE500_rec.tab
+
+6. 
+python add_numbp50_to_exons.py
+>>adds numbp50 and numbp75 for each exon with it's length and rec rate
+>>OUtput: GRCh37_exon1-6kb_CNE500_rec_numbp50.tab
+
+9. select_exons_final.py
+>>gives the final exons in 2 different ways. Place a fixed cutoff on intergenic length or use numbp50*4 as the cutoff. Write it in 2 separate files and add divergence to it.
+
+10. gets the final coordinates of each region (for use later):
+python get_final_coordinates_single_exons.py
+
