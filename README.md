@@ -2,6 +2,9 @@
 
 Following is the description of the scripts that are present in each of thes folders:
 
+>> calculate_B_analytically\
+Script to get values of B at any distance from a functional genomic element and to fit a log curve to the decay of diversity moving away from the element. Currently specific to human-like parameters, bu those can be modified.
+
 >> selecting_exons\
 Scripts used to select the exons in the human genome to which our method was applied.
 
