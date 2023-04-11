@@ -1,6 +1,9 @@
-Here are scripts used to obtain exon-specific mutation rates and test the bias in our inference method:
+Here are scripts used to test two specific model violations:
+A)not accounting for exon-specific mutation rates
+B)not accounting for ancestral allele mis-specification
 
-1. Obtain exon-specific mutation rates:
+A) Testing our method when there is mutation rate heterogeneity but is assumed to be constant:
+A1. Obtain exon-specific mutation rates:
 get_mutation_rate_single_exons.py
 
 Uses the following files:
@@ -10,7 +13,7 @@ Uses the following files:
 outputs mutation rate in file: 
 mutn_rate_single_exons.txt
 
-2. Run simulations incorporating mutation-rate heterogenetiy
+A2. Run simulations incorporating mutation-rate heterogenetiy
 -queue_SingExon_human_mutn_agave.sh
 -write_slim_scripts_SingExon_human_mutn_agave.py
 -run_SingExon_slim_array_human_agave.sh
@@ -18,10 +21,31 @@ mutn_rate_single_exons.txt
 -demo_dfe_SingExon_human_agave.slim //slim file to simulate with constant mutation rate
 -model_violations_parameters.txt //parameters and script used for simulations
 
-3. Filter the .ms files and calculate stats:
+A3. Filter the .ms files and calculate stats:
 run_SingExon_stats_array_osg_filtered.sh
 
 uses:
 -filter_ms_phase3_data.py
 -statistics_bigwindow_pylibseq_SingExon_osg_human_filtered.py
--make_table_statistics_model_violations.py
+
+A4: Make a table of all statistics to perform ABC:
+>> python make_table_statistics_model_violations.py ModelViolations_stats_filtered_5p 6
+
+
+B) Testing our method when ancestral allele may be misspecified but is assumed to be accurate:
+B1: Run simulations
+The simulations performed assuming constant mutation rate in step A2 were used.
+
+B2: Simulate ancestral allele misspecification, filter the .ms and .fixed files and calculate stats: 1% of all derived singletons were randomly assumed to be mis-specified and were thus assumed to represent high frequency ancestral alleles
+(that is, their frequency was changed from 1/100 to 99/100).
+>> sbatch run_SingExon_stats_array_osg_filtered_aa.sh
+This script uses the scripts:
+-mimic_ancestral_allele_misspecification.py
+-filter_ms_phase3_data.py
+-statistics_bigwindow_pylibseq_SingExon_osg_human_filtered.py
+-get_final_statistics_SingExon_filtered.R
+
+B3: Put all statistics together to perform ABC:
+>> python make_table_statistics_model_violations.py ModelViolations_aa_stats_filtered_5p 6
+
+
