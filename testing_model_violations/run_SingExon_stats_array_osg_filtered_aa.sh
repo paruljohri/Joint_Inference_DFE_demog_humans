@@ -24,7 +24,7 @@ module load gcc/6.3.0 #This is for pylibseq to work correctly. It might change l
 module load r/2.15.3
 
 #Mimic ancestral allele mis-specification:
-#python mimic_ancestral_allele_misspecification.py -inFolder "ModelViolations" -outFolder "ModelViolations" -simID ${simID} -numGenes 465 -numRep 1 
+python mimic_ancestral_allele_misspecification.py -inFolder "ModelViolations" -outFolder "ModelViolations" -simID ${simID} -numGenes 465 -numRep 1 
 
 #The region you want to use to filter:
 intergenic="5p" #5p/3p
