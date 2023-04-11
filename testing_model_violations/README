@@ -27,6 +27,8 @@ run_SingExon_stats_array_osg_filtered.sh
 uses:
 -filter_ms_phase3_data.py
 -statistics_bigwindow_pylibseq_SingExon_osg_human_filtered.py
+-get_final_statistics_SingExon_filtered.R (https://github.com/paruljohri/Joint_Inference_DFE_demog_humans/blob/main/ABC/Step2-calculate_stats/get_final_statistics_SingExon_filtered.R)
+
 
 A4: Make a table of all statistics to perform ABC:
 >> python make_table_statistics_model_violations.py ModelViolations_stats_filtered_5p 6
@@ -43,7 +45,7 @@ This script uses the scripts:
 -mimic_ancestral_allele_misspecification.py
 -filter_ms_phase3_data.py
 -statistics_bigwindow_pylibseq_SingExon_osg_human_filtered.py
--get_final_statistics_SingExon_filtered.R
+-get_final_statistics_SingExon_filtered.R (https://github.com/paruljohri/Joint_Inference_DFE_demog_humans/blob/main/ABC/Step2-calculate_stats/get_final_statistics_SingExon_filtered.R)
 
 B3: Put all statistics together to perform ABC:
 >> python make_table_statistics_model_violations.py ModelViolations_aa_stats_filtered_5p 6
