@@ -11,7 +11,7 @@ l = 4000.0 #(*Length of genomic element*)
 u = 1.25*1e-8 #(*Mutation rate*)
 U = l*u
 Ne =20000.0 #(*Effective population size, only required to calculate expected nucleotide diversity under neutrality*)
-pi = 4*Ne*u #(*Expected nucleotide diversity under neutrality*)
+pi = 4*Ne*u #(*Expected nucleotide diversity under neutrality and equilibrium*)
 #Keightley and Eyre-Walker DFE
 f0 = 0.22 #(*Proportion of effectively neutral mutations with 0 <= |2Nes| < 1 *)
 f1 = 0.27 #(*Proportion of weakly deleterious mutations with 1 <= |2Nes| < 10 *)
