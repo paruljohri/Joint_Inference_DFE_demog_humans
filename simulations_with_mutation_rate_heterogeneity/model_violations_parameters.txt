@@ -1,7 +1,0 @@
-simID   f0  f1  f2  f3  f_pos   s_pos   Na  Nc  Na_scaled   Nc_scaled   scaling_factor  model   Nfold   g_factor    script
-sim1    0.25    0.25    0.25    0.25    0.0 0.0 20000    20000    5000    5000    4.0 eqm 1.0 1.0 demo_dfe_SingExon_human_mutn_agave.slim
-sim2    0.25    0.25    0.25    0.25    0.0 0.0 20000    20000    5000    5000    4.0 eqm 1.0 1.0 demo_dfe_SingExon_human_agave.slim
-sim3    0.25    0.25    0.25    0.25    0.0 0.0 20000    40000    5000    10000    4.0 growth 2.0 1.0034657359027996 demo_dfe_SingExon_human_mutn_agave.slim
-sim4    0.25    0.25    0.25    0.25    0.0 0.0 20000    40000    5000    10000    4.0 growth 2.0 1.0034657359027996 demo_dfe_SingExon_human_agave.slim
-sim5    0.25    0.25    0.25    0.25    0.0 0.0 20000    10000    10000    5000    2.0 decline 0.5 0.9965342640972003 demo_dfe_SingExon_human_mutn_agave.slim
-sim6    0.25    0.25    0.25    0.25    0.0 0.0 20000    10000    10000    5000    2.0 decline 0.5 0.9965342640972003 demo_dfe_SingExon_human_agave.slim
