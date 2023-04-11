@@ -6,16 +6,17 @@ import numpy as np
 
 #Define variables and constants:
 g = 0.0 #rate of gene conversion
-r = 10*1e-8 #rate of recombination
-l = 150.0 #(*Length of genomic element*)
+r = 1*1e-8 #rate of recombination
+l = 4000.0 #(*Length of genomic element*)
 u = 1.25*1e-8 #(*Mutation rate*)
 U = l*u
 Ne =20000.0 #(*Effective population size, only required to calculate expected nucleotide diversity under neutrality*)
 pi = 4*Ne*u #(*Expected nucleotide diversity under neutrality*)
-f0 = 0.1 #0.22 #(*Proportion of effectively neutral mutations with 0 <= |2Nes| < 1 *)
-f1 = 0.7 #0.27 #(*Proportion of weakly deleterious mutations with 1 <= |2Nes| < 10 *)
-f2 = 0.1 #0.13 #(*Proportion of moderately deleterious mutations with 10 <= |2Nes| < 100 *)
-f3 = 0.1 #0.38 #(*Proportion of strongly deleterious mutations with |2Nes| >= 100 *)
+#Keightley and Eyre-Walker DFE
+f0 = 0.22 #(*Proportion of effectively neutral mutations with 0 <= |2Nes| < 1 *)
+f1 = 0.27 #(*Proportion of weakly deleterious mutations with 1 <= |2Nes| < 10 *)
+f2 = 0.13 #(*Proportion of moderately deleterious mutations with 10 <= |2Nes| < 100 *)
+f3 = 0.38 #(*Proportion of strongly deleterious mutations with |2Nes| >= 100 *)
 #(*Note that the number of classes can easily be increased to whatever is required to approximate the continuous DFE *)
 h = 0.5 #(* dominance coefficient *)
 #(*Now we define the boundaries of the fixed intervals over which we will integrate *)
