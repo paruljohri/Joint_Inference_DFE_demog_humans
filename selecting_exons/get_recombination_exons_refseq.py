@@ -14,6 +14,24 @@ def average(l_val):
 		s_avg = str(float(s_sum)/float(s_tot))
 	return (s_avg)
 
+#Reading conversion of chromosome names:                                        
+print ("reading chromosome info")                                               
+d_ucsc_chromname = {}                                                           
+f_info = open("/home/pjohri1/BgsDfeDemo_Human/Humans/annotation/GRCh37_info.txt", 'r')
+d_col = {}                                                                      
+for line in f_info:                                                             
+    line1 = line.strip('\n')                                                    
+    line2 = line1.split('\t')                                                   
+    if line2[0] == "Sequence-Name":                                             
+        col = 0                                                                 
+        for x in line2:                                                         
+            d_col[x] = col                                                      
+            col = col + 1                                                       
+    else:                                                                       
+        d_ucsc_chromname[line2[d_col["RefSeq-Accn"]]] = line2[d_col["UCSC-style-name"]]
+f_info.close()                                                                  
+print (d_ucsc_chromname)
+
 #storing recombination rates:
 d_rec = {}
 d_chr = {}
@@ -46,40 +64,37 @@ for line in f_exon:
 	else:
 		s_start = int(line2[d_col["exon_start"]])
 		s_end = int(line2[d_col["exon_end"]])
-		s_chr = line2[d_col["chrom"]]
+		s_chr = d_ucsc_chromname[line2[d_col["chrom"]]]
 		gene = line2[d_col["gene"]]
 		print (gene)
-		#i = 0
-		#while i < len(l_starts):
-		#	 check = 0
-			#print (l_starts[i] + '\t' + l_ends[i])
-		#	 s_start = int(l_starts[i])
-			#s_end = int(l_ends[i])
+		
 		l_rates = []
 		l_coords = []
 		for x in d_start.keys():
-		#		 if d_chr[x] == s_chr:
-			if int(d_start[x]) <= s_start:
-				if s_end <= int(d_end[x]):#exon lies within a recomb region
-					l_rates.append(d_rec[x])
-					l_coords.append(int(d_start[x]))
-					l_coords.append(int(d_end[x]))
-			elif s_start <= int(d_start[x]):
-				if int(d_end[x]) <= s_end:#recomb region lies within the exon
-					l_rates.append(d_rec[x])
-					l_coords.append(int(d_start[x]))
-					l_coords.append(int(d_end[x]))
-			elif int(d_start[x]) <= s_start:
-				if s_start <= int(d_end[x]):#recomb region overlaps start of exon
-					l_rates.append(d_rec[x])
-					l_coords.append(int(d_start[x]))
-					l_coords.append(int(d_end[x]))
-			elif int(d_start[x]) <= s_end:
-				if s_end <= int(d_end[x]):#recomb region overlaps end of exon
-					l_rates.append(d_rec[x])
-					l_coords.append(int(d_start[x]))
-					l_coords.append(int(d_end[x]))
+		    if d_chr[x] == s_chr:
+			    if int(d_start[x]) <= s_start:
+				    if s_end <= int(d_end[x]):#exon lies within a recomb region
+					    l_rates.append(d_rec[x])
+					    l_coords.append(int(d_start[x]))
+					    l_coords.append(int(d_end[x]))
+			    elif s_start <= int(d_start[x]):
+				    if int(d_end[x]) <= s_end:#recomb region lies within the exon
+					    l_rates.append(d_rec[x])
+					    l_coords.append(int(d_start[x]))
+					    l_coords.append(int(d_end[x]))
+			    elif int(d_start[x]) <= s_start:
+				    if s_start <= int(d_end[x]):#recomb region overlaps start of exon
+					    l_rates.append(d_rec[x])
+					    l_coords.append(int(d_start[x]))
+					    l_coords.append(int(d_end[x]))
+			    elif int(d_start[x]) <= s_end:
+				    if s_end <= int(d_end[x]):#recomb region overlaps end of exon
+					    l_rates.append(d_rec[x])
+					    l_coords.append(int(d_start[x]))
+					    l_coords.append(int(d_end[x]))
 		l_coords.sort()
+		print(l_coords)
+		print(l_rates)
 		if len(l_coords) >= 2:
 			result.write(line1 + '\t' + str(l_coords[0]) + '\t' + str(l_coords.pop()) + '\t' + str(average(l_rates)) + '\n')
 		else:
